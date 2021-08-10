@@ -1,5 +1,9 @@
 CogScience/
 images/
+Natureimages/
+CogImages/
+ACLImages/
+ACLTest/
 PDFNatureAntibiotics/
 drawing-000-00.png
 drawing-001-00.png
@@ -12,3 +16,17 @@ drawings.py
 get-drawing.py
 get-drawingnotext.py
 img_github.py
+1.pdf
+2.pdf
+3.pdf
+4.pdf
+5.pdf
+6.pdf
+7.pdf
+8.pdf
+filedeletion.py
+imgtest.py
+jsonreader.py
+jsontest.py
+imganddrawing.py
+path2png.py

@@ -14,12 +14,12 @@ cookies = {"CONTENT_USAGE_SESSIONID":"utterlyidle:v1:MzcwNmJhNGItOTFlMS00NGFjLTh
 f = requests.get(link,headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246"},cookies=cookies)
 siteindex = BeautifulSoup(f.text,'html.parser')
 journals = siteindex.find_all('div',{'class':'border-bottom-1'})
-count=18174
+count=19401
 for j in range(1):#journals:
     #journalsLink = j.find_all('a')
     for l in range(1):#journalsLink:
     #print(journalsLink)
-        l = "/nmat"
+        l = "/palcomms"
         browseLink = "https://www.nature.com"+l+"/articles"
         print(browseLink)
         #browseLink = "https://www.nature.com/aps/articles?searchType=journalSearch&sort=PubDate&page=167"

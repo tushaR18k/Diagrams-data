@@ -13,10 +13,10 @@ Copyright (c) 2021, Jorj McKie
 import fitz
 import sys
 
-doc = fitz.open("B:\\PDFACL\\5.pdf")
+doc = fitz.open("B:\\PDFACL\\435.pdf")
 for page in doc:
     new_rects = []  # resulting rectangles
-
+    #page = doc[2]
     for p in page.get_drawings():
         w = p["width"]
         r = p["rect"] + (-w, -w, w, w)  # enlarge each rectangle by width value
@@ -32,18 +32,20 @@ for page in doc:
     new_rects = list(set(new_rects))  # remove any duplicates
     new_rects.sort(key=lambda r: abs(r), reverse=True)
     remove = []
+    print(new_rects)
     for j in range(len(new_rects)):
         for i in range(len(new_rects)):
             if new_rects[j] in new_rects[i] and i != j:
                 remove.append(j)
     remove = list(set(remove))
-    print(new_rects)
-    # for i in reversed(remove):
-    #     del new_rects[i]
+    for i in reversed(remove):
+        del new_rects[i]
     new_rects.sort(key=lambda r: (r.tl.y, r.tl.x))  # sort by location
+    print(new_rects)
     mat = fitz.Matrix(3, 3)  # high resolution matrix
     for i, r in enumerate(new_rects):
+        print(r.height)
         if r.height <= 5 or r.width <= 5:
             continue  # skip lines and empty rects
-        pix = page.getPixmap(matrix=mat, clip=r)
+        pix = page.get_pixmap(matrix=mat, clip=r)
         pix.writePNG("drawing-%03i-%02i.png" % (page.number, i))
